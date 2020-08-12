@@ -7,13 +7,53 @@ use Illuminate\Database\Eloquent\Model;
 class Owner extends Model
 {
 
-        public static function fullName()
-        {
-            return $this->first_name." ".$this->last_name;
+    protected $fillable = [
+        "first_name",
+        "last_name",
+        "telephone",
+        "address_1",
+        "address_2",
+        "town",
+        "postcode",
+        "email"
+    ];
+    
+    public function fullName()
+    {
+        return $this->first_name.' '.$this->last_name;
+    }
+
+    public function fullAddress()
+    {
+        $address = $this->address_1.", ";
+        if ($this->address_2 != ''){
+            $address .= $this->address_2.", ";
+        }
+        $address .= $this->town.", ";
+        $address .= $this->postcode;
+
+        return $address;
+    }
+
+    public static function haveWeBananas($number)
+    {
+        if ($number < 1) {
+            return "No we have no bananas";
+        }elseif ($number === 1){
+            return "Yes we have {$number} banana";
         }
 
-        public static function fullAddress()
-        {
-            return Owner::$this->address_1." ".$this->address_2;
+        return "Yes we have {$number} bananas";
+    }
+
+    public static function findEmail($email)
+    {
+        $matches = Owner::where('email', $email)->get();
+
+        if (count($matches) > 0){
+            return true;
         }
+
+        return false;
+    }
 }

@@ -1,10 +1,12 @@
 @extends("app")
 
 @section("title")
-<title> Welcome</title>
+<title> An Owner</title>
 @endsection
 
 @section("content")
-<p> {{ $welcome }}</p>
+
+@include("/partials/owner")
+
 @endsection
 

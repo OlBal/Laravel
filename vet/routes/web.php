@@ -13,19 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', "Home@index"); 
+
+Route::group(["prefix" => "owners"], function(){
+    Route::get('/', "Owners@index");
+    Route::get('create', "Owners@create");
+    Route::post('create', "Owners@createOwner");
+    Route::get("{owner}", "Owners@show");
+    Route::get("{owner}/edit", "Owners@edit");
 });
 
 Route::get('/about', function () {
     return view('about');
 });
 
-Route::get('/address', function () {
-    return view('address');
-});
 
-Route::get('/blog', function () {
-    return view('blog');
-});
 

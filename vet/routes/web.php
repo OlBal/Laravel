@@ -17,10 +17,11 @@ Route::get('/', "Home@index");
 
 Route::group(["prefix" => "owners"], function(){
     Route::get('/', "Owners@index");
+    Route::get("{owner}", "Owners@show");
+    Route::post("{owner}", "Owners@createAnimal");
     Route::get('create', "Owners@create");
     Route::post('create', "Owners@createOwner");
-    Route::get("{owner}", "Owners@show");
-    Route::get("{owner}/edit", "Owners@edit");
+    
 });
 
 Route::get('/about', function () {

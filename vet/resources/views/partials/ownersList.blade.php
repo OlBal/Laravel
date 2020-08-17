@@ -1,7 +1,7 @@
 
 <ul>
     @foreach ($owners as $owner) 
-    <li class="">{{ $owner->fullName() }}</li>
+    <li class=""><a href="">{{ $owner->fullName() }}</a></li>
     @endforeach    
 </ul>
 

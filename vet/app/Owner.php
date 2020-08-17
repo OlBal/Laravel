@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Animal;
 
 class Owner extends Model
 {
@@ -56,4 +57,12 @@ class Owner extends Model
 
         return false;
     }
+
+    public function animals() 
+    {
+        return $this->hasMany(Animal::class); 
+    }
+
+    
+
 }

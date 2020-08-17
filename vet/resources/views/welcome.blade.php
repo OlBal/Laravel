@@ -5,6 +5,6 @@
 @endsection
 
 @section("content")
-<p> {{ $welcome }}</p>
+<h1 class ="h1"> {{ $welcome }}</h1>
 @endsection
 

@@ -1,7 +1,7 @@
 @extends("app")
 
 @section("title")
-<title> Welcome TO THE WOOORRRLLDDD OF TOMORRROWWWWW </title>
+<title> Owners </title>
 @endsection
 
 @section("content")

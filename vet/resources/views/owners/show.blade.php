@@ -8,5 +8,7 @@
 
 @include("/partials/owner")
 
+@include("/partials/animalForm")
+
 @endsection
 

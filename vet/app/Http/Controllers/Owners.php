@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Owner;
 use App\Http\Requests\OwnerRequest;
+use App\Animal;
 use App\Http\Requests\AnimalRequest;
 
 class Owners extends Controller
@@ -48,8 +49,9 @@ public function edit(Owner $owner) {
     return view('owners/edit')->with('owner', $owner); 
 }
 
-public function createAnimal(AnimalRequest $request, Animal $animal) 
+public function createAnimal($request, Animal $animal) 
     {
+        // dd($request);
         $animal = new Animal($request->all());
         $owner->animals()->save($animal);
         return redirect("/owners/{$owner->id}");

@@ -12,15 +12,15 @@ class Animal extends Model
     }
 
 
-    public function dangerous()
-    {
-        if($this->biteyness >= 3){
-            return true;
-        }
+    // public function dangerous()
+    // {
+    //     if($this->biteyness >= 3){
+    //         return true;
+    //     }
 
-        else return false;
+    //     else return false;
        
-    }
+    // }
 
 
 }

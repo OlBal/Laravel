@@ -28,9 +28,9 @@ class AnimalRequest extends FormRequest
                 'name'=> ['required', "name","max:100"],
                 'type'=> ['required', "type","max:100"],
                 'date_of_birth'=> ['required', "date_of_birth"],
-                'weight_kg'=> ['required', "weight_kg","max:5"],
-                'height in meters'=> ['required', "height_m","max:5"],
-                'biteyness'=> ['required', "biteyness","between:1,5"]
+                'weight_kg'=> ['required', "weight_kg"],
+                'height in meters'=> ['required', "height_m"],
+                'biteyness'=> ['required', "biteyness"]
         ];
     }
 }

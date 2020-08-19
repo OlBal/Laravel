@@ -84,7 +84,6 @@
   @error('biteyness') 
     <p class="invalid-feedback"> {{ $message }} </p>
   @enderror
-  <span class="font-weight-bold text-primary ml-2 mt-1 valueSpan"></span>
 </div>
 
 

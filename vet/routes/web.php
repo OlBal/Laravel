@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\API\Owners;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +23,9 @@ Route::group(["prefix" => "owners"], function(){
     Route::post('create', "Owners@createOwner");
     
 });
+
+
+
 
 Route::get('/about', function () {
     return view('about');

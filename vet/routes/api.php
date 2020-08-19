@@ -17,3 +17,15 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+//Routing for API
+
+ Route::group(["prefix" => "API"], function()
+ {
+    Route::get('/', 'API\Owners@index');
+    Route::get('{owner}', 'API\Owners@show');
+    Route::delete('{owner}', 'API\Owners@destroy');
+
+    Route::post('owner', 'API\Owners@store');
+ });

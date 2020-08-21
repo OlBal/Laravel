@@ -11,16 +11,18 @@ class Animal extends Model
         return $this->belongsTo(Owner::class); 
     }
 
+    public function animals() 
+    {
+        return $this->hasMany(Treatments::class); 
+    }
 
-    // public function dangerous()
-    // {
-    //     if($this->biteyness >= 3){
-    //         return true;
-    //     }
-
-    //     else return false;
-       
-    // }
-
-
+    
+    public function dangerous()
+    {
+        if($this->biteyness >= 3)
+        {
+            return true;
+        }
+        return false;
+    }
 }

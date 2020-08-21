@@ -21,10 +21,12 @@ Route::group(["prefix" => "owners"], function(){
     Route::post("{owner}", "Owners@createAnimal");
     Route::get('create', "Owners@create");
     Route::post('create', "Owners@createOwner");
-    
+    Route::get('animals', 'Animals@index');
+    Route::get('{owner}/animal', 'Animals@show');
+
 });
 
-
+   
 
 
 Route::get('/about', function () {

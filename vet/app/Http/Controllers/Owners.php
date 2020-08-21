@@ -35,9 +35,7 @@ class Owners extends Controller
 public function createOwner(OwnerRequest $request) {
 
     $data = $request->all();
-
     $owner = Owner::create($data);
-
     return redirect("owners");
 
 }
@@ -45,11 +43,10 @@ public function createOwner(OwnerRequest $request) {
 public function edit(Owner $owner) {
 
     $owner = Owner::find($owner);
-
     return view('owners/edit')->with('owner', $owner); 
 }
 
-public function createAnimal($request, Animal $animal) 
+public function createAnimal(AnimalRequest $request, Animal $animal) 
     {
         // dd($request);
         $animal = new Animal($request->all());

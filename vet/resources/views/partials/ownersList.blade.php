@@ -1,7 +1,7 @@
 
-<ul class ="list-group list-group-flush">
+<ul class ="">
     @foreach ($owners as $owner) 
-<li class="list-group-item"><a href="{{$owner->id}}">{{ $owner->fullName() }}</a></li>
+<li class="list"><a href="/owners/{{$owner->id}}">{{ $owner->fullName() }}</a></li>
     @endforeach    
 </ul>
 

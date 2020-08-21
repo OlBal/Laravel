@@ -4,9 +4,10 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Owner as OwnerAPI;
+use App\Animal;
 
-class Owners extends Controller 
+
+class Animals extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,8 @@ class Owners extends Controller
      */
     public function index()
     {
-        $owners = OwnerAPI::all();
-        return $owners;
+        $animal = Animal::animal();
+        return $animal;
     }
 
     /**
@@ -28,19 +29,19 @@ class Owners extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $owner = OwnerAPI::create($data);
-        return $owner;
+        $owner = Animal::create($data);
+        return $animal;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $owner
+     * @param  int  $animal
      * @return \Illuminate\Http\Response
      */
-    public function show(OwnerAPI $owner)
+    public function show(Animal $animal)
     {
-        return $owner;
+        return $animal;
     }
 
     /**
@@ -50,37 +51,20 @@ class Owners extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OwnerAPI $owner)
-    {
-        $data = $request->all();
-        $owner->update($data);
-        return $owner;
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $owner
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(OwnerAPI $owner)
-    {
-        $owner->delete();
-        return response(null, 204);
-    }
-
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $owner
-     * @return \Illuminate\Http\Response
-     */
-    public function animals(OwnerAPI $owner)
+    public function update(Request $request, Animal $animal)
     {
        
-        return $owner->animals;
     }
 
-
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $animal
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Animal $animal)
+    {
+        $animal->delete();
+        return response(null, 204);
+    }
 }

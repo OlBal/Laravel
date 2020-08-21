@@ -22,20 +22,20 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 //Routing for Owners
 
 Route::group(["prefix" => "owners"], function(){
-    Route::get('/', 'API\Owners@index');
-    Route::get('{owner}', 'API\Owners@show');
-    Route::delete('{owner}', 'API\Owners@destroy');
-    Route::post('/', 'API\Owners@store');
-    Route::put('/', 'API\Owners@store');
-});
 
-//Routing for Animals
-
-Route::group(["prefix" => "owners"], function(){
-    Route::get('animals', 'API\Animals@index');
+    //Animal Routes
     Route::get('{owner}/animal', 'API\Animals@show');
     Route::delete('{owner}/animal', 'API\Animals@destroy');
     Route::post('{owner}/animal', 'API\Animals@store');
     Route::put('{owner}/animal', 'API\Animals@store');
     Route::get('{owner}/owneranimal', 'API\Owners@animals');
+    Route::get('animals', 'API\Animals@index');
+    
+    //Owner Routes
+    Route::get('/', 'API\Owners@index');
+    Route::post('/', 'API\Owners@store');
+    Route::put('/', 'API\Owners@store');
+    Route::get('{owner}', 'API\Owners@show');
+    Route::delete('{owner}', 'API\Owners@destroy');
 });
+

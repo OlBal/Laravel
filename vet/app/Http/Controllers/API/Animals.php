@@ -5,6 +5,10 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Animal;
+use App\Http\Requests\API\AnimalRequest;
+use App\Http\Resources\API\AnimalResource;
+
+
 
 
 class Animals extends Controller
@@ -16,7 +20,7 @@ class Animals extends Controller
      */
     public function index()
     {
-        $animal = Animal::animal();
+        $animal = Animal::all();
         return $animal;
     }
 
@@ -26,7 +30,7 @@ class Animals extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AnimalRequest $request)
     {
         $data = $request->all();
         $owner = Animal::create($data);
@@ -51,7 +55,7 @@ class Animals extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Animal $animal)
+    public function update(AnimalRequest $request, Animal $animal)
     {
        
     }

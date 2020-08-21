@@ -5,6 +5,10 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Owner as OwnerAPI;
+use App\Http\Requests\API\OwnerRequest;
+use App\Http\Resources\API\OwnerResource;
+use App\Treatments;
+
 
 class Owners extends Controller 
 {
@@ -25,11 +29,13 @@ class Owners extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OwnerRequest $request)
     {
-        $data = $request->all();
+        $data =  $request->only('name','date_of_birth','biteyness','treatments');
         $owner = OwnerAPI::create($data);
-        return $owner;
+        $treatments = OwnerAPI::fromStrings($request->get("treatments")); 
+        $article->tags()->sync($tags->pluck("id")->all());
+        return new OwnerResource($owner);
     }
 
     /**
@@ -40,7 +46,7 @@ class Owners extends Controller
      */
     public function show(OwnerAPI $owner)
     {
-        return $owner;
+        return new OwnerResource($owner);
     }
 
     /**
@@ -50,11 +56,12 @@ class Owners extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, OwnerAPI $owner)
+    public function update(OwnerRequest $request, OwnerAPI $owner)
     {
-        $data = $request->all();
+        $data = $request->only('name','date_of_birth','biteyness','treatments');
+        $treatments = Treatment::fromStrings($request->get('treatments'));
         $owner->update($data);
-        return $owner;
+        new OwnerResource($owner);
     }
 
     /**
@@ -77,8 +84,7 @@ class Owners extends Controller
      * @return \Illuminate\Http\Response
      */
     public function animals(OwnerAPI $owner)
-    {
-       
+    {  
         return $owner->animals;
     }
 

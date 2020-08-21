@@ -10,6 +10,7 @@ use App\Http\Requests\AnimalRequest;
 
 class Owners extends Controller
 {
+
  public function index()
  {
     return view('owners/index', [
@@ -17,42 +18,45 @@ class Owners extends Controller
         //for testing
         // "owners" => collect([]), 
     ]);
-
  }
 
- public function show(Owner $owner) {
-
-    return view('owners/show', [ 
+ public function show(Owner $owner)
+{
+    return view('owners/show', 
+    [ 
         'owner' => $owner
     ]); 
-
- }
+}
     
- public function create() {
+ public function create() 
+{
     return view('owners/form'); 
 }
 
-public function createOwner(OwnerRequest $request) {
-
+public function createOwner(OwnerRequest $request) 
+{
     $data = $request->all();
     $owner = Owner::create($data);
     return redirect("owners");
-
 }
 
-public function edit(Owner $owner) {
+// public function edit(Owner $owner) 
+// {
+//     $owner = Owner::find($owner);
+//     return view('owners/edit')->with('owner', $owner); 
+// }
 
-    $owner = Owner::find($owner);
-    return view('owners/edit')->with('owner', $owner); 
+
+
+public function createAnimal(Owner $owner, AnimalRequest $request) 
+{
+    // dd($request);
+    $animal = new Animal($request->all());
+    $owner->animals()->save($animal);
+    return redirect("owners/{$owner->id}");
 }
 
-public function createAnimal(AnimalRequest $request, Animal $animal) 
-    {
-        // dd($request);
-        $animal = new Animal($request->all());
-        $owner->animals()->save($animal);
-        return redirect("/owners/{$owner->id}");
-    }
+
 
 
 

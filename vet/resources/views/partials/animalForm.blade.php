@@ -48,7 +48,8 @@
   <input
   id = "weight_kg" 
   name = "weight_kg" 
-  type = "number"
+  type = "number" 
+  step = "0.01"
   placeholder = "Weight in KG"
   class = "form-control @error('weight_kg') is-invalid @enderror"
   value = "{{ old("weight_kg") }}" />
@@ -63,6 +64,7 @@
   id="height_m"  
   name="height_m" 
   type="number"
+  step = "0.01"
   placeholder="Height in meters"
   class="form-control @error('height_m') is-invalid @enderror"
   value="{{ old("email") }}" />
@@ -71,10 +73,9 @@
   @enderror
 </div>
 
-<div class="form-group range-field w-75">
+
   <label for="biteyness">Biteyness</label> 
   <input
-  
   id="biteyness"  
   name="biteyness" 
   type="range" min="1" max="5"
@@ -84,7 +85,6 @@
   @error('biteyness') 
     <p class="invalid-feedback"> {{ $message }} </p>
   @enderror
-</div>
 
 
 

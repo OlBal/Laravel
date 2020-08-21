@@ -15,18 +15,22 @@ use App\Http\Controllers\API\Owners;
 
 Route::get('/', "Home@index"); 
 
+//Owner Routes
+
 Route::group(["prefix" => "owners"], function(){
     Route::get('/', "Owners@index");
-    Route::get("{owner}", "Owners@show");
-    Route::post("{owner}", "Owners@createAnimal");
     Route::get('create', "Owners@create");
     Route::post('create', "Owners@createOwner");
-    Route::get('animals', 'Animals@index');
-    Route::get('{owner}/animal', 'Animals@show');
-
+    Route::get('{owner}', "Owners@show");
+    Route::post('{owner}', "Owners@createAnimal");
 });
 
-   
+//Animal Routes
+
+// Route::group(["prefix" => "owners"], function(){
+    Route::get('owners/animals', 'Owners@list');
+    // Route::get('{owner}/animal', 'Animals@show');
+// });
 
 
 Route::get('/about', function () {

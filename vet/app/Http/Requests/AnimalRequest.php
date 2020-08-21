@@ -25,12 +25,12 @@ class AnimalRequest extends FormRequest
     {
         return [
 
-                'name'=> ['required', "name","max:100"],
-                'type'=> ['required', "type","max:100"],
-                'date_of_birth'=> ['required', "date_of_birth"],
-                'weight_kg'=> ['required', "weight_kg"],
-                'height in meters'=> ['required', "height_m"],
-                'biteyness'=> ['required', "biteyness"]
+                'name'=> ['required', "string","max:100"],
+                'type'=> ['required', "string","max:100"],
+                'date_of_birth'=> ['required', "date"],
+                'weight_kg'=> ['required', "numeric"],
+                'height_m'=> ['required', "numeric"],
+                'biteyness'=> ['required', "integer"]
         ];
     }
 }

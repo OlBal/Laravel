@@ -3,27 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\AnimalRequest;
 use App\Animal;
 
 class Animals extends Controller
 {
 
-    public function index()
+    public function list()
     {
-       return view('owners/animals', [
-           "animals" => Animal::all(),
-           //for testing
-           // "owners" => collect([]), 
-       ]);
+       return view('owners/animals', 
+        [
+           "animals" => Animal::all() 
+        ]);
    
     }
 
-    public function show(Owner $animal) {
+    // public function show(Animal $animal) {
 
-        return view('owners/{owner}/animal', [ 
-            'animal' => $aniaml
-        ]); 
+    //     return view('owner}/animal', [ 
+    //         'animal' => $animal
+    //     ]); 
     
-     }
+    //  }
+
 
 }

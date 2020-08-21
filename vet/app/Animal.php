@@ -6,12 +6,27 @@ use Illuminate\Database\Eloquent\Model;
 
 class Animal extends Model
 {
+
+    protected $fillable = [
+        'name',
+        'type',
+        'date_of_birth',
+        'weight_kg',
+        'height_m',
+        'biteyness'
+    ];
+
     public function animal()
     {
         return $this->belongsTo(Owner::class); 
     }
 
-    public function animals() 
+    public function name()
+    {
+        return $this->name;
+    }
+
+    public function treatments() 
     {
         return $this->hasMany(Treatments::class); 
     }

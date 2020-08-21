@@ -9,7 +9,7 @@ class Treatment extends Model
 {
     public $timestamps = false;
 
-    public function treatments()
+    public function animals()
     {
         return $this->belongsToMany(Animal::class); 
     }

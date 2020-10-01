@@ -22,8 +22,6 @@ class Animals extends Controller
     }
 
 
-
-
     public function newAnimal(){
 
         $animal = new Animal($request->only(["name", "type", "dob", "weight", "height", "biteyness"]));

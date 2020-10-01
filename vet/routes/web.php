@@ -24,20 +24,15 @@ Route::group(["prefix" => "owners"], function(){
     Route::post('create', "Owners@createOwner");
     Route::get('{owner}', "Owners@show");
     Route::post('{owner}', "Owners@createAnimal");
-    Route::group(["prefix" => "edit"], function(){
-            Route::get('{owner}', "Owners@edit");   
-            Route::post('{owner}', "Owners@editOwner");
+     Route::get('/{owner}/animal', 'Animals@show');
+    // Route::group(["prefix" => "edit"], function(){
+            Route::get('edit/{owner}', "Owners@edit");   
+            Route::post('edit/{owner}', "Owners@editOwner");
 
-            });
+            // });
     });
 });
 
-//Animal Routes
-
-Route::group(["prefix" => "owners"], function(){
-    Route::get('/{owner}/animal', 'Animals@show');
-  
-});
 
 Route::get('/about', function () {
     return view('about');
@@ -45,7 +40,11 @@ Route::get('/about', function () {
 
 Auth::routes(['register' => false]);
 
-
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('logout', function ()
+{ auth()->logout();
+Session()->flush();
+
+ return Redirect::to('/');
+})->name('logout');
+

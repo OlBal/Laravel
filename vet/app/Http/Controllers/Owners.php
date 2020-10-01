@@ -23,8 +23,7 @@ class Owners extends Controller
 
  public function show(Owner $owner)
 {
-
-        $animals = $owner->animals;
+    $animals = $owner->animals;
 
     return view('owners/show', 
     [ 
@@ -37,6 +36,23 @@ class Owners extends Controller
 {
     return view('owners/form'); 
 }
+
+ public function edit(Owner $owner) 
+{
+    return view("owners/edit",
+     [
+        "owner" => $owner
+    ]); 
+}
+
+public function editOwner(OwnerRequest $request, Owner $owner)
+{
+    $data = $request->all();
+    $owner->update($data);
+    return redirect("/owners/{$owner->id}");        
+}
+
+
 
 public function createOwner(OwnerRequest $request) 
 {
@@ -59,6 +75,14 @@ public function createAnimal(Owner $owner, AnimalRequest $request)
     return redirect("owners/{$owner->id}");
 }
 
+
+public function destroy(Owner $owner)
+    { 
+        $users = Auth::user($id);
+        $users->delete();
+
+        return Redirect::route('/owners');
+    }
 
 
 

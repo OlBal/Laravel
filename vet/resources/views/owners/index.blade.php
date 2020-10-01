@@ -9,7 +9,7 @@
     @if ($owners->isEmpty() )
         <p>No Owners Found</p>
     @else 
-        @include('partials/ownersList')
+        @include('owners/_partials/ownersList')
     @endif
     
 @endsection

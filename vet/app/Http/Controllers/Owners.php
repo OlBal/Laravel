@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Owner;
-use App\Http\Requests\OwnerRequest;
 use App\Animal;
+use Illuminate\Http\Request;
+use App\Http\Requests\OwnerRequest;
 use App\Http\Requests\AnimalRequest;
+use Illuminate\Support\Facades\DB;
 
 class Owners extends Controller
 {
@@ -22,9 +23,13 @@ class Owners extends Controller
 
  public function show(Owner $owner)
 {
+
+        $animals = $owner->animals;
+
     return view('owners/show', 
     [ 
-        'owner' => $owner
+        'owner' => $owner,
+        "animals" => $animals,
     ]); 
 }
     
@@ -45,8 +50,6 @@ public function createOwner(OwnerRequest $request)
 //     $owner = Owner::find($owner);
 //     return view('owners/edit')->with('owner', $owner); 
 // }
-
-
 
 public function createAnimal(Owner $owner, AnimalRequest $request) 
 {

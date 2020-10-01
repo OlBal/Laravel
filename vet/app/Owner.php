@@ -36,17 +36,7 @@ class Owner extends Model
         return $address;
     }
 
-    public static function haveWeBananas($number)
-    {
-        if ($number < 1) {
-            return "No we have no bananas";
-        }elseif ($number === 1){
-            return "Yes we have {$number} banana";
-        }
-
-        return "Yes we have {$number} bananas";
-    }
-
+ 
     public static function findEmail($email)
     {
         $matches = Owner::where('email', $email)->get();

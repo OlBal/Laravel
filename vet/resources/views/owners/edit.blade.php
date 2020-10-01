@@ -4,4 +4,4 @@
 <title>Edit an Existing Owner</title>
 @endsection
 
-@include('owner/form')
+@include('owners/_partials/form')

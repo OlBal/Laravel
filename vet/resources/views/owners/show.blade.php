@@ -6,9 +6,11 @@
 
 @section("content")
 
-@include("/partials/owner")
+@include("owners/_partials/owner")
 
-@include("/partials/animalForm")
+@include ("/animals/_partials/animalsList",["animals" => $animals])
+
+@include("/animals/_partials/animalForm")
 
 @endsection
 

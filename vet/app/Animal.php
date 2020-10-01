@@ -16,7 +16,7 @@ class Animal extends Model
         'biteyness'
     ];
 
-    public function animal()
+    public function owner()
     {
         return $this->belongsTo(Owner::class); 
     }
@@ -32,7 +32,7 @@ class Animal extends Model
     }
 
     
-    public function dangerous()
+    public function dangerous() : bool
     {
         if($this->biteyness >= 3)
         {

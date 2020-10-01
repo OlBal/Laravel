@@ -3,6 +3,6 @@
 @section("title")
 <title>Create an Owner</title>
 
-@include('partials/form')
+@include('owners/_partials/form')
 @endsection
 

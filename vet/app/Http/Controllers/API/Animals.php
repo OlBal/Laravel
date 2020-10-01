@@ -9,8 +9,6 @@ use App\Http\Requests\API\AnimalRequest;
 use App\Http\Resources\API\AnimalResource;
 
 
-
-
 class Animals extends Controller
 {
     /**

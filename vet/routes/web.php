@@ -18,24 +18,34 @@ Route::get('/', "Home@index");
 //Owner Routes
 
 Route::group(["prefix" => "owners"], function(){
+    Route::group(["middlware" => "auth"], function(){
     Route::get('/', "Owners@index");
     Route::get('create', "Owners@create");
     Route::post('create', "Owners@createOwner");
     Route::get('{owner}', "Owners@show");
     Route::post('{owner}', "Owners@createAnimal");
+    Route::group(["prefix" => "edit"], function(){
+            Route::get('{owner}', "Owners@edit");   
+            Route::post('{owner}', "Owners@editOwner");
+
+            });
+    });
 });
 
 //Animal Routes
 
-// Route::group(["prefix" => "owners"], function(){
-    Route::get('owners/animals', 'Owners@list');
-    // Route::get('{owner}/animal', 'Animals@show');
-// });
-
+Route::group(["prefix" => "owners"], function(){
+    Route::get('/{owner}/animal', 'Animals@show');
+  
+});
 
 Route::get('/about', function () {
     return view('about');
 });
 
+Auth::routes(['register' => false]);
 
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

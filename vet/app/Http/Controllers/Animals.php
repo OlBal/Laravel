@@ -2,29 +2,45 @@
 
 namespace App\Http\Controllers;
 
+use App\Owner;
+use App\Animal;
 use Illuminate\Http\Request;
 use App\Http\Requests\AnimalRequest;
-use App\Animal;
+use App\Http\Requests\OwnerRequest;
+use Illuminate\Support\Facades\DB;
 
 class Animals extends Controller
 {
 
-    public function list()
+    public function show()
     {
-       return view('owners/animals', 
+       return view("animals", 
         [
            "animals" => Animal::all() 
         ]);
    
     }
 
-    // public function show(Animal $animal) {
 
-    //     return view('owner}/animal', [ 
-    //         'animal' => $animal
-    //     ]); 
-    
-    //  }
+
+
+    public function newAnimal(){
+
+        $animal = new Animal($request->only(["name", "type", "dob", "weight", "height", "biteyness"]));
+
+        $owner->animals()->save($animal);
+
+    }
+
+      public function destroy(Animal $animal)
+    {
+        $owner = $animal->owner;
+        $animal->delete();
+        
+        return redirect("/owners/{$owner->id}");
+    }
+
+  
 
 
 }

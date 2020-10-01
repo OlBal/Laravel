@@ -10,7 +10,7 @@ class Home extends Controller
     public function index()
     {
 
-    return view('welcome',[
+    return view('_partials.welcome',[
         "welcome" => Home::time()
     ]);
 

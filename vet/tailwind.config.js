@@ -1,12 +1,11 @@
+// tailwind.config.js
 module.exports = {
-    future: {
-        // removeDeprecatedGapUtilities: true,
-        // purgeLayersByDefault: true,
-    },
-    purge: [],
     theme: {
-        extend: {}
-    },
-    variants: {},
-    plugins: [require("@tailwindcss/ui")]
+        extend: {
+            backgroundImage: theme => ({
+                "login-background":
+                    "url('/img/jf-brou-915UJQaxtrk-unsplash.jpg')"
+            })
+        }
+    }
 };

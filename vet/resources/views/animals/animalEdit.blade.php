@@ -1,11 +1,11 @@
 @extends("app")
 
 
-<ul class ="animals__list-group">
+<ul class ="p-3 group shadow-lg bg-white text-gray-900">
     @foreach ($animals as $animal) 
 
-<li class = "animals__list-item">
-    <div class="animals__list-item__container">
+<li class = "p-3 group shadow-lg bg-white text-gray-900">
+    <div class="p-3 group shadow-lg bg-white text-gray-900">
         <p class="">Name: {{ $animal->name }}</p>
         <p class="">Type: {{ $animal->type }}</p>
         <p class="">Age:{{ $animal->date_of_birth }}</p>

@@ -13,7 +13,7 @@ use App\Http\Controllers\API\Owners;
 |
 */
 
-Route::get('/', "Home@index"); 
+Route::get('/home', "Home@index"); 
 
 //Owner Routes
 
@@ -45,6 +45,6 @@ Route::get('logout', function ()
 { auth()->logout();
 Session()->flush();
 
- return Redirect::to('/');
+ return Redirect::to('/home');
 })->name('logout');
 

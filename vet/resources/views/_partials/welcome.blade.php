@@ -1,8 +1,3 @@
-@extends("app")
-
-@section("title")
-<title> Welcome</title>
-@endsection
 
 @section("content")
 <div class ="welcome_container">

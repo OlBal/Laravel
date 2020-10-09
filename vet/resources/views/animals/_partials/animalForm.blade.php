@@ -1,6 +1,4 @@
-
-
-<form method="post" class="form card mt-4 mb-4"> 
+<form method="post" class="shadow-lg bg-white text-gray-900 list-none text pb-3 pl-3 pr-3 pt-0"> 
 <h4 class="card-header">Add Animal</h4> 
 <fieldset class="card-body">
 
@@ -85,11 +83,9 @@
   @error('biteyness') 
     <p class="invalid-feedback"> {{ $message }} </p>
   @enderror
-
-
-
 </fieldset>
-<div class="card-footer text-right">
-<button class="btn btn-success">Add Animal</button>
-  </div>
+
+<button class="btn ">Add Animal</button>
+
+
 </form>

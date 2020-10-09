@@ -1,15 +1,7 @@
 
-<div class="card">
-    <h2 class="card-header">
+
+    <article class="p-3 group text-3xl shadow-lg bg-white text-gray-900">
         {{ $owner->fullName() }}
-    </h2> 
-    <article class="card-body">
         {{ $owner->fullAddress() }} 
     </article>
-    <h2 class="card-body">
-
-    </h2>
-
  
-</div>
-

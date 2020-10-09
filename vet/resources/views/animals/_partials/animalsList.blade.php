@@ -3,8 +3,8 @@
 <ul class ="animals__list-group">
     @foreach ($animals as $animal) 
 
-<li class = "animals__list-item">
-    <div class="animals__list-item__container">
+<li class = "list-none mt-8 mb-8">
+    <div class=" group shadow-lg bg-white text-gray-900 list-none text pb-3 pl-3 pr-3 pt-0">
         <p class="">Name: {{ $animal->name }}</p>
         <p class="">Type: {{ $animal->type }}</p>
         <p class="">Age:{{ $animal->date_of_birth }}</p>

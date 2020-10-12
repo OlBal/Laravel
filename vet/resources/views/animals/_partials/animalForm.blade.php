@@ -1,78 +1,62 @@
-<form method="post" class="shadow-lg bg-white text-gray-900 list-none text pb-3 pl-3 pr-3 pt-0"> 
+<form method="post" class="shadow-lg bg-white text-gray-900 list-none text pb-3 pl-3 pr-3 pt-0 text-center"> 
 <h4 class="card-header">Add Animal</h4> 
 <fieldset class="card-body">
 
 @csrf
 
-<div class="form-group">
-  <label for="name">Animal Name</label> 
   <input
-  id="name" name="name" type="text"
-  class="form-control @error('name') is-invalid @enderror"
-  value="{{ old("name") }}" 
-  />
+  id="name" name="name" type="text" placeholder="Name"
+  class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 text-sm font-bold mb-2 @error('type') is-invalid @enderror"
+  value="{{ old("name") }}" />
   @error('name')
     <p class="invalid-feedback">{{ $message }}</p> 
   @enderror
-</div>
 
-
-<div class="form-group">
-  <label for="type">Type Of Animal</label> 
   <input
-  id="type" name="type" type="text"
-  class="form-control @error('type') is-invalid @enderror"
+  id="type" name="type" type="text" placeholder="Type"
+  class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 text-sm font-bold mb-2 @error('type') is-invalid @enderror"
   value="{{ old("type") }}" />
   @error('type')
     <p class="invalid-feedback"> {{ $message }} </p>
   @enderror
-  </div>
-
-<div class="form-group">
-  <label for="date_of_birth">Date Of Birth</label> 
+ 
   <input
   id="date_of_birth" 
   name="date_of_birth" 
   type="date"
-  class="form-control @error('email') is-invalid @enderror"
+  placeholder="Date Of Birth"
+  class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 text-sm font-bold mb-2 @error('email') is-invalid @enderror"
   value="{{ old("date_of_birth") }}" />
   @error('date_of_birth')
     <p class="invalid-feedback"> {{ $message }} </p>
   @enderror
-</div>
 
-<div class="form-group">
-  <label for="weight_kg">Weight</label>
   <input
   id = "weight_kg" 
   name = "weight_kg" 
   type = "number" 
+    placeholder="Weight (In KG)"
   step = "0.01"
   placeholder = "Weight in KG"
-  class = "form-control @error('weight_kg') is-invalid @enderror"
+  class = "bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 text-sm font-bold mb-2 @error('weight_kg') is-invalid @enderror"
   value = "{{ old("weight_kg") }}" />
   @error('weight_kg')
     <p class = "invalid-feedback"> {{ $message }} </p>
   @enderror
-</div>
 
-<div class="form-group">
-  <label for="height_m">Height</label> 
   <input
   id="height_m"  
   name="height_m" 
   type="number"
   step = "0.01"
+    placeholder="Height (In Meters)"
   placeholder="Height in meters"
-  class="form-control @error('height_m') is-invalid @enderror"
+  class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500 text-sm font-bold mb-2 @error('height_m') is-invalid @enderror"
   value="{{ old("email") }}" />
   @error('height_m') 
     <p class="height_m"> {{ $message }} </p>
   @enderror
-</div>
 
-
-  <label for="biteyness">Biteyness</label> 
   <input
   id="biteyness"  
   name="biteyness" 
@@ -85,7 +69,7 @@
   @enderror
 </fieldset>
 
-<button class="btn ">Add Animal</button>
+<button type="submit" class="mt-2 bg-orange-500 hover:bg-orange-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Add Animal</button>
 
 
 </form>

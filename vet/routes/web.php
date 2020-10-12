@@ -13,8 +13,6 @@ use App\Http\Controllers\API\Owners;
 |
 */
 
-Route::get('/home', "Home@index"); 
-
 //Owner Routes
 
 Route::group(["prefix" => "owners"], function(){
@@ -25,26 +23,18 @@ Route::group(["prefix" => "owners"], function(){
     Route::get('{owner}', "Owners@show");
     Route::post('{owner}', "Owners@createAnimal");
      Route::get('/{owner}/animal', 'Animals@show');
-    // Route::group(["prefix" => "edit"], function(){
             Route::get('edit/{owner}', "Owners@edit");   
             Route::post('edit/{owner}', "Owners@editOwner");
 
-            // });
     });
 });
 
-
-Route::get('/about', function () {
-    return view('about');
-});
-
-Auth::routes(['register' => false]);
-
+Auth::routes(['register' => true]);
+Route::get('/home', "Home@index"); 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('logout', function ()
 { auth()->logout();
 Session()->flush();
-
  return Redirect::to('/home');
 })->name('logout');
 

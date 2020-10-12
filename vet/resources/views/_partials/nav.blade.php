@@ -1,5 +1,5 @@
 
-<nav class="flex w-screen justify-end">
+<nav class="flex w-screen justify-end shadow-md">
   <a class="navbar" href="/"></a> 
   <ul class =" text-lg list-none flex inline-block py-3 px-5 flex-row flex-end">
       <li class="  mr-6 self-center"><a class="nav-link" href="/home">Home</a></li>

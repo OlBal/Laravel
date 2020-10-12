@@ -17,7 +17,6 @@ class Home extends Controller
 
     }
 
-
     public static function time()
     {
         $time = date("H");
@@ -29,6 +28,4 @@ class Home extends Controller
         }else return "Good Evening";
     }   
     
-
-
 }

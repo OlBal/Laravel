@@ -5,15 +5,19 @@
 @endsection
 
 @section("content")
-<div class = "grid grid-cols-6 grid-rows-6">
 
     @if ($owners->isEmpty() )
         <p>No Owners Found</p>
     @else 
-    <div class="row-span-2 col-start-2 col-span-2">
+    <div class="flex justify-start">
         @include('owners/_partials/ownersList')
     @endif
+
+
+
 </div>
-    
+
+
+
 @endsection
 

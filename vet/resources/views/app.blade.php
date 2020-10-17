@@ -11,7 +11,7 @@
         <script src="" defer></script>
     </head>
 
-    <body  >
+    <body>
       @include ("_partials/nav")
         
             <main class="h-full flex justify-center">

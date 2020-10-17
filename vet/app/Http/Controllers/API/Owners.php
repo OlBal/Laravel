@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Owner as OwnerAPI;
-use App\Http\Requests\API\OwnerRequest;
+//use Illuminate\Http\Request;
+use App\Owner;
+use App\Http\Requests\API\OwnerRequest as Request;
+use App\Http\Requests\OwnerDestroyRequest;
+use App\Http\Requests\OwnerStoreRequest;
 use App\Http\Resources\API\OwnerResource;
-use App\Treatments;
 
-
-class Owners extends Controller 
+class Owners extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +19,8 @@ class Owners extends Controller
      */
     public function index()
     {
-        $owners = OwnerAPI::all();
-        return $owners;
+        // return all Owners from the database
+        return OwnerResource::collection(Owner::all());
     }
 
     /**
@@ -29,23 +29,26 @@ class Owners extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(OwnerRequest $request)
+    public function store(OwnerStoreRequest $request)
     {
-        $data =  $request->only('name','date_of_birth','biteyness','treatments');
-        $owner = OwnerAPI::create($data);
-        $treatments = OwnerAPI::fromStrings($request->get("treatments")); 
-        $article->tags()->sync($tags->pluck("id")->all());
+        // get request data
+        $data = $request->all();
+
+        // create new record in DB
+        $owner = Owner::create($data);
+
         return new OwnerResource($owner);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $owner
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(OwnerAPI $owner)
+    public function show(Owner $owner)
     {
+        //return the requested owner
         return new OwnerResource($owner);
     }
 
@@ -56,37 +59,30 @@ class Owners extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(OwnerRequest $request, OwnerAPI $owner)
+    public function update(OwnerStoreRequest $request, Owner $owner)
     {
-        $data = $request->only('name','date_of_birth','biteyness','treatments');
-        $treatments = Treatment::fromStrings($request->get('treatments'));
+        // get all the request data
+        $data = $request->all();
+
+        // update owner in the database
         $owner->update($data);
-        new OwnerResource($owner);
+
+        // return updated version
+        return new OwnerResource($owner);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $owner
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(OwnerAPI $owner)
+    public function destroy(OwnerDestroyRequest $request, Owner $owner)
     {
+        // delete owner from the DB
         $owner->delete();
+
+        // return 204
         return response(null, 204);
     }
-
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $owner
-     * @return \Illuminate\Http\Response
-     */
-    public function animals(OwnerAPI $owner)
-    {  
-        return $owner->animals;
-    }
-
-
 }

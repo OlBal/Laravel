@@ -1,6 +1,7 @@
 @extends('app')
 
 @section('content')
+ <div style="background-image: url('../../public/img/jf-brou-915UJQaxtrk-unsplash.jpg');"> 
 <div class ="flex flex-direction-row justify-center align-center text-center h-auto w-screen mt-20">
                     <form class="flex flex-col  h-auto bg-white shadow-lg rounded px-8 pt-6 pb-8 mb-4 " method="POST" action="{{ route('login') }}">
                         @csrf
@@ -55,6 +56,7 @@
                     </form>
                  </div>
                 </div>
+            </div>
     </div>
 </div>
 @endsection

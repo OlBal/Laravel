@@ -3,7 +3,12 @@
 <div class="flex h-full justify-center justify-self-center bg-white w-3/4 shadow-md rounded px-8 pt-6 pb-8 mt-10">
     <form method ="post"class="text-center self-center bg-white w-2/4 shadow-lg rounded px-8 pt-6 pb-8 mb-4">
         @csrf
+        @if(\Request::is("owners/create"))
         <h2 class="m-0 pb-5 justify-center">New Owner Form</h2>
+        @else
+        <h2 class="m-0 pb-5 justify-center">Edit Existing Owner</h2>
+        @endif
+
         <fieldset>
                 <input 
                 required 

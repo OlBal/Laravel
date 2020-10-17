@@ -52,8 +52,6 @@ public function editOwner(OwnerRequest $request, Owner $owner)
     return redirect("/owners/{$owner->id}");        
 }
 
-
-
 public function createOwner(OwnerRequest $request) 
 {
     $data = $request->all();
@@ -61,31 +59,17 @@ public function createOwner(OwnerRequest $request)
     return redirect("owners");
 }
 
-// public function edit(Owner $owner) 
-// {
-//     $owner = Owner::find($owner);
-//     return view('owners/edit')->with('owner', $owner); 
-// }
-
 public function createAnimal(Owner $owner, AnimalRequest $request) 
 {
-    // dd($request);
     $animal = new Animal($request->all());
     $owner->animals()->save($animal);
     return redirect("owners/{$owner->id}");
 }
 
-
 public function destroy(Owner $owner)
     { 
-        $users = Auth::user($id);
-        $users->delete();
+        $owner->delete();
 
-        return Redirect::route('/owners');
+        return redirect('owners');
     }
-
-
-
-
-
 }

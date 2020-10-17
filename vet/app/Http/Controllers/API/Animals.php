@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use App\Animal;
-use App\Http\Requests\API\AnimalRequest;
+use App\Http\Requests\AnimalDestroyRequest;
+use App\Http\Requests\AnimalStoreRequest;
+use App\Http\Requests\API\AnimalRequest as Request;
 use App\Http\Resources\API\AnimalResource;
-
+use App\Treatment;
 
 class Animals extends Controller
 {
@@ -18,8 +20,8 @@ class Animals extends Controller
      */
     public function index()
     {
-        $animal = Animal::all();
-        return $animal;
+        // return all Animals from the database
+        return AnimalResource::collection(Animal::all());
     }
 
     /**
@@ -28,22 +30,26 @@ class Animals extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(AnimalRequest $request)
+    public function store(AnimalStoreRequest $request)
     {
-        $data = $request->all();
-        $owner = Animal::create($data);
-        return $animal;
+        // get request data for the animal
+        $animal_data = $request->only("name", "date_of_birth", "type", "weight", "height", "biteyness", "owner_id");
+        $animal = Animal::create($animal_data);
+
+        // return resource
+        return new AnimalResource($animal);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $animal
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show(Animal $animal)
     {
-        return $animal;
+        // return the requested animal info
+        return new AnimalResource($animal);
     }
 
     /**
@@ -53,20 +59,31 @@ class Animals extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(AnimalRequest $request, Animal $animal)
+    public function update(AnimalStoreRequest $request, Animal $animal)
     {
-       
+        //dd($request, $animal);
+        // get request data for the animal
+        $animal_data = $request->only("name", "date_of_birth", "type", "weight_kg", "height_m", "biteyness");
+
+        // save data
+        $animal->fill($animal_data)->save();
+        
+        // return updated version
+        return new AnimalResource($animal);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $animal
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Animal $animal)
+    public function destroy(AnimalDestroyRequest $request, Animal $animal)
     {
+        // delete animal from the DB
         $animal->delete();
+
+        // return 204
         return response(null, 204);
     }
 }

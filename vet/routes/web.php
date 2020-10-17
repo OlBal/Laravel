@@ -16,18 +16,30 @@ use App\Http\Controllers\API\Owners;
 //Owner Routes
 
 Route::group(["prefix" => "owners"], function(){
-    Route::group(["middlware" => "auth"], function(){
+    
     Route::get('/', "Owners@index");
+    Route::group(["middlware" => "auth"], function(){
     Route::get('create', "Owners@create");
     Route::post('create', "Owners@createOwner");
     Route::get('{owner}', "Owners@show");
     Route::post('{owner}', "Owners@createAnimal");
-     Route::get('/{owner}/animal', 'Animals@show');
+    Route::get('/{owner}/animal', 'Animals@show');
+    Route::post('delete/{owner}',"Owners@destroy");
+
             Route::get('edit/{owner}', "Owners@edit");   
             Route::post('edit/{owner}', "Owners@editOwner");
 
     });
 });
+
+Route::group(["prefix" => "animals"], function () {
+    Route::get('/', "Animals@index");
+    Route::get('/{animal}', "Animals@show");
+    Route::get('edit/{animal}', "Animals@edit");   
+     Route::post('edit/{animal}', "Animals@editAnimal");
+     Route::post('delete/{animal}', "Animals@destroy");
+});
+
 
 Auth::routes(['register' => true]);
 Route::get('/home', "Home@index"); 

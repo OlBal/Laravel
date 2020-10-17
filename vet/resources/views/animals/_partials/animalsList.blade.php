@@ -20,12 +20,15 @@
             <p>{{ $animal->height_m }}M</p>
         </div>
         <div class="flex flex-row items-center mr-8">
+
+        <button class=" mr-5 self-center bg-transparent hover:bg-white-500 text-black-700 font-semibold hover:text-white py-2 px-4 border border-orange-800 hover:border-transparent rounded" ><a href="/animals/edit/{{$animal->id}}">Edit</a></button>
+
         <form class="btn" action="/animals/delete/{{ $animal->id }}" method="post">
         @csrf
-            <button type="submit" class=" self-center bg-transparent hover:bg-white-500 text-black-700 font-semibold hover:text-white py-2 px-4 border border-orange-800 hover:border-transparent rounded"  value="Delete">Delete</button>
+            <button type="submit" class="  self-center bg-transparent hover:bg-white-500 text-black-700 font-semibold hover:text-white py-2 px-4 border border-orange-800 hover:border-transparent rounded"  value="Delete">Delete</button>
         </form> 
 
-        <button class="self-center bg-transparent hover:bg-white-500 text-black-700 font-semibold hover:text-white py-2 px-4 border border-orange-800 hover:border-transparent rounded" ><a href="/animals/edit/{{$animal->id}}">Edit</a></button>
+        
         </div>
         </div>
     </li>

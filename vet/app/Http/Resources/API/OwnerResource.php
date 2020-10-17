@@ -17,12 +17,7 @@ class OwnerResource extends JsonResource
         return [
             "first_name" => $this->first_name,
             "last_name" => $this->last_name,
-            // "telephone" => $this->telephone, 
-            "address_1" => $this->address_1,
-            "address_2" => $this->address_2,
-            // "town" => $this->town,
-            // "postcode" => $this->postcode,
-            // "email" => $this->email,
+            "address" => $this->fullAddress(),
             "animals" => collect($this->animals)->pluck('name'),
         ];
     }

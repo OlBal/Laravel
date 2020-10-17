@@ -2,43 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Owner;
 use App\Animal;
-use Illuminate\Http\Request;
-use App\Http\Requests\AnimalRequest;
-use App\Http\Requests\OwnerRequest;
-use Illuminate\Support\Facades\DB;
 
 class Animals extends Controller
 {
-
-    public function show()
+    public function index() 
     {
-       return view("animals", 
-        [
-           "animals" => Animal::all() 
+        $animals = Animal::paginate(10);
+        return view("animals",['page' => 'Animals','animals' => $animals]);
+    }
+
+    public function show(Animal $animal) 
+    {
+        $owner = $animal->owner; 
+        return view("animals",['page' => 'Animal','animal' => $animal, 'owner' => $owner]);
+    }
+
+        public function edit(Owner $owner, Animal $animal)
+    {
+        return view("animals/edit", [
+            "owner" => $owner,
+            "animal" => $animal
         ]);
-   
     }
 
-
-    public function newAnimal(){
-
-        $animal = new Animal($request->only(["name", "type", "dob", "weight", "height", "biteyness"]));
-
-        $owner->animals()->save($animal);
-
+    public function editAnimal(AnimalRequest $request, Animal $animal)
+    {
+        $data = $request->all();
+        $animal->update($data);
+        return redirect("/animals/{$animal->id}");        
     }
 
-      public function destroy(Animal $animal)
+    public function destroy(Animal $animal)
     {
         $owner = $animal->owner;
         $animal->delete();
         
-        return redirect("/owners/{$owner->id}");
+        return redirect("/animals");
     }
-
-  
-
-
 }
